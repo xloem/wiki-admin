@@ -1,0 +1,35 @@
+Goals:
+  - open system run by forkable wiki and logged to the same wiki.
+    uses machine learning to 'moderate' a discussion forum towards productive dialogue,
+    where 'moderate' is whatever the discussion forum community wants.
+  - data and behavior attributes can be frozen / forked for specific use / times.
+
+Since the programmer may have brain damage, here are thoughts on
+simplifying the wiki admin:
+
+Configuration:
+- a dockerfile could be hosted on a wiki on the web. [maybe categorise
+the type, "dockerfile", for other uses.]
+- a process could scrape this, looking for guard text surrounding the
+data [put it in a <code> format with guard text], and place it
+straight into the matching configuration file.  guard text should
+start and stop with linebreak to make parsers easier to make.
+
+Logging:
+- a user could be made on the wiki for the server
+- if a web wiki is used, login and editing requests could be captured
+for that user, and recreated to append to the log.  if a git wiki is
+used, then logging data could be converted to a wiki page, and git
+tools used to contribute.
+- a third process can be made, to monitor the log, and send alarms if
+updating it halts.
+
+Security:
+- this mostly shouldn't matter because people will use the wiki to
+move the wiki host onto the server reading from it and set up
+continuously increasing security.  all that is needed is for the wiki
+pages to be forkable etc and reliable enough that that happens before
+total compromise.
+- regarding reliability, we could pin the ssl certificates and make
+the core administration page uneditable.
+
